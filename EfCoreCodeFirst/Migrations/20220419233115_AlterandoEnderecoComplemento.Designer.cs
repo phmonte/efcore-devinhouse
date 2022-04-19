@@ -4,6 +4,7 @@ using EfCoreCodeFirst;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EfCoreCodeFirst.Migrations
 {
     [DbContext(typeof(SqlContext))]
-    partial class SqlContextModelSnapshot : ModelSnapshot
+    [Migration("20220419233115_AlterandoEnderecoComplemento")]
+    partial class AlterandoEnderecoComplemento
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -32,20 +34,14 @@ namespace EfCoreCodeFirst.Migrations
 
                     b.Property<string>("Bairro")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)")
-                        .HasColumnName("bairro");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("CEP")
-                        .HasMaxLength(10)
-                        .HasColumnType("int")
-                        .HasColumnName("cep");
+                        .HasColumnType("int");
 
                     b.Property<string>("Cidade")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)")
-                        .HasColumnName("cidade");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Complemento")
                         .IsRequired()
@@ -55,27 +51,19 @@ namespace EfCoreCodeFirst.Migrations
 
                     b.Property<string>("Numero")
                         .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)")
-                        .HasColumnName("numero");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Referencia")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)")
-                        .HasColumnName("referencia");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Rua")
                         .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)")
-                        .HasColumnName("rua");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UF")
                         .IsRequired()
-                        .HasMaxLength(2)
-                        .HasColumnType("nvarchar(2)")
-                        .HasColumnName("uf");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
