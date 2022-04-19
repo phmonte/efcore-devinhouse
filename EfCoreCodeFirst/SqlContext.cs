@@ -61,5 +61,13 @@ public class SqlContext : DbContext
             .HasColumnName("cep")
             .IsRequired()
             .HasMaxLength(10);
+
+        modelBuilder.Entity<Imovel>()
+            .HasMany(x => x.Proprietarios)
+            .WithMany(x => x.Imoveis);
+        
+        modelBuilder.Entity<Imovel>()
+            .HasOne(x => x.Endereco)
+            .WithMany(x => x.Imoveis);
     }
 }

@@ -1,3 +1,5 @@
+using EfCoreCodeFirst.Modelos;
+
 namespace EfCoreCodeFirst;
 
 public class Endereco
@@ -11,4 +13,6 @@ public class Endereco
     public string UF { get; set; }
     public string Complemento { get; set; }
     public string Referencia { get; set; }
+    
+    public ICollection<Imovel> Imoveis { get; set; }
 }
