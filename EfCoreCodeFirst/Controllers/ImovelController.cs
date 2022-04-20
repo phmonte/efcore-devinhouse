@@ -26,6 +26,14 @@ namespace EfCoreCodeFirst.Controllers
             return listaImoveis;
         }
         
+        
+        [HttpGet("{imovelId}")]
+        public Imovel GetById([FromRoute]int imovelId)
+        {
+            var listaImoveis = _sqlContext.Imoveis.FirstOrDefault(x => x.Id == imovelId);
+            return listaImoveis;
+        }
+        
         [HttpPost]
         public void Post([FromBody]Imovel imovel)
         {
@@ -33,6 +41,19 @@ namespace EfCoreCodeFirst.Controllers
             _sqlContext.SaveChanges();
         }
         
-
+        [HttpPut]
+        public void Put([FromBody]Imovel imovel)
+        {
+            _sqlContext.Imoveis.Update(imovel);
+            _sqlContext.SaveChanges();
+        }
+        
+        [HttpDelete("{imovelId}")]
+        public void Delete([FromRoute]int imovelId)
+        {
+            var imovelEncontrado = _sqlContext.Imoveis.FirstOrDefault(x => x.Id == imovelId);
+            _sqlContext.Imoveis.Remove(imovelEncontrado);
+            _sqlContext.SaveChanges();
+        }
     }
 }
