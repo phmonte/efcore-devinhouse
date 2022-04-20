@@ -25,12 +25,10 @@ public class Imovel
     public float Area { get; set; }
     [Column("valor-condominio")]
     public float ValorCondominio { get; set; }
-    public int? EnderecoId { get; set; }
     [Column("endereco")]
-
-    public Endereco Endereco { get; set; }
+    public Endereco? Endereco { get; set; }
     [Column("proprietario")]
-    public ICollection<Proprietario> Proprietarios { get; set; }
+    public ICollection<Proprietario>? Proprietarios { get; set; }
     //public EnumTipo TipoImovel { get; set; }
     //public string Corretor { get; set; }
 }

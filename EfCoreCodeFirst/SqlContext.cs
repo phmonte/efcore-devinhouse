@@ -69,5 +69,18 @@ public class SqlContext : DbContext
             .HasOne(x => x.Endereco)
             .WithMany(x => x.Imoveis)
             .IsRequired(false);
+
+        modelBuilder.Entity<Imovel>()
+            .Navigation(x => x.Endereco);
+        
+        modelBuilder.Entity<Imovel>()
+            .Navigation(x => x.Proprietarios);
+        
+        modelBuilder.Entity<Proprietario>()
+            .Navigation(x => x.Contatos);
+        
+        modelBuilder.Entity<Proprietario>()
+            .Navigation(x => x.Imoveis);
+        
     }
 }
