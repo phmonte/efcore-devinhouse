@@ -59,15 +59,15 @@ public class SqlContext : DbContext
         modelBuilder.Entity<Endereco>()
             .Property(x =>x.CEP)
             .HasColumnName("cep")
-            .IsRequired()
             .HasMaxLength(10);
 
         modelBuilder.Entity<Imovel>()
             .HasMany(x => x.Proprietarios)
             .WithMany(x => x.Imoveis);
-        
+
         modelBuilder.Entity<Imovel>()
             .HasOne(x => x.Endereco)
-            .WithMany(x => x.Imoveis);
+            .WithMany(x => x.Imoveis)
+            .IsRequired(false);
     }
 }

@@ -135,7 +135,7 @@ namespace EfCoreCodeFirst.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("descricao_longa");
 
-                    b.Property<int>("EnderecoId")
+                    b.Property<int?>("EnderecoId")
                         .HasColumnType("int");
 
                     b.Property<float>("Preco")
@@ -202,9 +202,7 @@ namespace EfCoreCodeFirst.Migrations
                 {
                     b.HasOne("EfCoreCodeFirst.Endereco", "Endereco")
                         .WithMany("Imoveis")
-                        .HasForeignKey("EnderecoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("EnderecoId");
 
                     b.Navigation("Endereco");
                 });
